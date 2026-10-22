@@ -2,14 +2,14 @@
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>API-Controle Educacional</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Inter:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f3f6ff;--sf:#fff;--ink:#0a1a40;--mut:#566489;--ln:#d3dcf2;--pr:#2f6df0;--prt:#fff;--am:#f5a60a;--amb:#fff0cc;--rd:#c62828;--sb:#14389a;--sbt:#d8e4ff;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070f26;--sf:#0f1b3f;--ink:#e8eeff;--mut:#9aaad4;--ln:#233768;--pr:#6b9bff;--prt:#04122e;--am:#ffbf3c;--amb:#3a2c08;--rd:#ff7b72;--sb:#050c20;--sbt:#bccaf0}}
 :root[data-theme="dark"]{--bg:#070f26;--sf:#0f1b3f;--ink:#e8eeff;--mut:#9aaad4;--ln:#233768;--pr:#6b9bff;--prt:#04122e;--am:#ffbf3c;--amb:#3a2c08;--rd:#ff7b72;--sb:#050c20;--sbt:#bccaf0}
 html{color-scheme:light dark}*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Nunito","Segoe UI",Inter,system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--ff,"Nunito","Segoe UI",system-ui,sans-serif)}
 h1,h2,h3{font-family:inherit;margin:0 0 .5rem;overflow-wrap:anywhere}
 h1{font-size:1.7rem;font-weight:800}h2{font-size:1.2rem}
 button,input,select{font:inherit;color:inherit}
@@ -33,7 +33,7 @@ nav small{display:block;padding:.6rem .6rem 0;opacity:.75}
 main{padding:1.4rem;min-width:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin-bottom:1rem}
 .stat{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:.9rem}
-.stat b{display:block;font:800 2rem "Nunito","Segoe UI",system-ui,sans-serif;color:var(--pr)}
+.stat b{display:block;font-weight:800;font-size:2rem;color:var(--pr)}
 .stat.a b{color:var(--am)}
 .tw{overflow-x:auto}
 table{border-collapse:collapse;width:100%;min-width:560px}
@@ -59,7 +59,7 @@ th{color:var(--mut);font-weight:600;font-size:.9rem}
 @keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 @keyframes growx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes slideup{from{opacity:0;transform:translate(-50%,24px)}to{opacity:1;transform:translate(-50%,0)}}
-.out{min-height:100vh;position:relative;overflow:hidden;background:linear-gradient(120deg,#0f2f8f,#2f6df0,#1a46b8,#5b8cff);background-size:300% 300%;animation:flow 14s ease infinite}
+.out{min-height:100vh;position:relative;overflow:hidden;background:linear-gradient(120deg,color-mix(in srgb,var(--pr) 40%,#000),var(--pr),color-mix(in srgb,var(--pr) 65%,#000),color-mix(in srgb,var(--pr) 70%,#fff));background-size:300% 300%;animation:flow 14s ease infinite}
 .out::before,.out::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08);animation:float 9s ease-in-out infinite}
 .out::before{width:280px;height:280px;left:-60px;top:12%}.out::after{width:200px;height:200px;right:-40px;bottom:10%;animation-delay:-4s;background:rgba(245,166,10,.18)}
 .out .login{position:relative;z-index:1}
@@ -84,6 +84,19 @@ tbody tr{transition:background .15s}tbody tr:hover{background:rgba(23,71,209,.07
 .toast{animation:slideup .3s both;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 h1{background:linear-gradient(90deg,var(--ink),var(--pr));-webkit-background-clip:text;background-clip:text;color:transparent}
 html{scroll-behavior:smooth}
+button:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+button.sw{width:36px;height:36px;border-radius:50%;padding:0;color:#fff;font-weight:800;border:2px solid var(--sf);box-shadow:0 0 0 1px var(--ln)}
+.row input[type=color]{flex:0 0 46px!important;height:38px;padding:2px}
+.ord{padding:.3rem 0;border-bottom:1px solid var(--ln)}
+html[data-bg=grad] body{background:linear-gradient(160deg,color-mix(in srgb,var(--pr) 18%,var(--bg)),var(--bg) 55%) fixed}
+html[data-bg=dots] body{background:radial-gradient(color-mix(in srgb,var(--pr) 32%,transparent) 1.2px,transparent 1.5px) 0 0/22px 22px,var(--bg)}
+html[data-bg=aurora] body,html.glass[data-bg=""] body{background:radial-gradient(55% 45% at 10% 5%,color-mix(in srgb,var(--pr) 38%,transparent),transparent),radial-gradient(45% 45% at 95% 15%,rgba(245,166,10,.3),transparent),radial-gradient(60% 60% at 60% 100%,color-mix(in srgb,var(--pr) 28%,transparent),transparent),var(--bg);background-size:150% 150%;animation:flow 18s ease infinite}
+html.glass .card,html.glass .stat,html.glass .md,html.glass .tile{background:color-mix(in srgb,var(--sf) 42%,transparent);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);border:1px solid color-mix(in srgb,#fff 45%,transparent);box-shadow:0 10px 34px rgba(10,30,90,.16),inset 0 1px 0 rgba(255,255,255,.55)}
+html.glass button:not(.p):not(.d):not(.sw){background:color-mix(in srgb,var(--sf) 38%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid color-mix(in srgb,#fff 50%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 4px 14px rgba(0,0,0,.1)}
+html.glass button.p{background:linear-gradient(180deg,color-mix(in srgb,var(--pr) 70%,#fff),var(--pr));border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 6px 18px color-mix(in srgb,var(--pr) 45%,transparent)}
+html.glass nav{background:color-mix(in srgb,var(--sb) 60%,transparent);-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)}
+html.glass input,html.glass select,html.glass textarea{background:color-mix(in srgb,var(--sf) 50%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html.glass table{background:transparent}
 .dots{display:flex;gap:.4rem;margin-bottom:.4rem}.dots i{height:6px;flex:1;border-radius:4px;background:var(--ln);transition:background .4s}.dots i.on{background:var(--pr)}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.tile{padding:1rem .5rem;border-radius:12px;font-weight:700}.tile:hover,.tile.sel{border-color:var(--pr);background:rgba(47,109,240,.12)}
 .step{animation:rise .45s both}
@@ -141,14 +154,14 @@ const st=D.students.find(x=>x.id==s);D.lates.push({id:'l'+i,sid:s,name:st.name,c
 let S={user:null,view:'painel',toast:'',notes:[],q:'',fc:'',fs:'active'};
 const MENU={
 platform_admin:[['escolas','Escolas']],
-school_admin:[['painel','Painel'],['registrar','Registrar atraso'],['atrasos','Histórico'],['graficos','Gráficos'],['alunos','Alunos'],['sairam','Alunos que saíram'],['progressao','Progressão de ano'],['professores','Professores'],['turmas','Turmas'],['auditoria','Auditoria'],['escola','Escola']],
+director:[['painel','Painel'],['registrar','Registrar atraso'],['atrasos','Histórico'],['graficos','Gráficos'],['alunos','Alunos'],['sairam','Alunos que saíram'],['progressao','Progressão de ano'],['professores','Professores'],['turmas','Turmas'],['auditoria','Auditoria'],['escola','Escola']],
 staff:[['painel','Painel'],['registrar','Registrar atraso'],['atrasos','Alunos atrasados'],['graficos','Gráficos'],['alunos','Alunos'],['sairam','Alunos que saíram'],['progressao','Progressão de ano'],['professores','Professores'],['turmas','Turmas']],
 teacher:[['painel','Painel'],['atrasos','Alunos atrasados'],['minhas','Minhas turmas']],
 student:[['aluno','Meu painel']]};
-const ROLES={platform_admin:'Administrador do app',school_admin:'Administrador da escola',director:'Diretor',staff:'Pedagogia',teacher:'Professor',student:'Aluno'};MENU.director=MENU.school_admin;
+const ROLES={student:'Aluno',teacher:'Professor',staff:'Pedagogia',director:'Diretor',platform_admin:'Administrador do app'};
 function log(action,summary){D.audit.unshift({when:new Date().toLocaleString('pt-BR'),who:S.user.name,action,summary})}
 function say(m){sfx(m);if(!S.user||S.modal){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2200);return}S.toast=m;draw();setTimeout(()=>{S.toast='';draw()},2200)}
-const school=()=>S.user.school;
+const school=()=>({...S.user.school,...((D&&D.cfg)||{})});
 const active=()=>D.lates.filter(l=>l.status=='active');
 const sw=()=>(S.sel=S.sel||{});
 function tbl(h,rows){return `<div class="tw"><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.join('')||`<tr><td colspan="${h.length}" class="mut">Nada por aqui ainda.</td></tr>`}</tbody></table></div>`}
@@ -166,7 +179,7 @@ return `<h1>Registrar atraso</h1><p class="mut">Data e horário são gerados pel
 ${tbl(['','Aluno','Turma','CGM'],list.map(s=>`<tr><td><input type="checkbox" data-sel="${s.id}" ${sel[s.id]?'checked':''} aria-label="Selecionar ${esc(s.name)}"></td><td>${esc(s.name)}</td><td>${cn(s.cls)}</td><td>${s.cgm}</td></tr>`))}</div>
 ${ids.length?`<div class="card stack"><h2>2. Confirme (${ids.length} aluno${ids.length>1?'s':''})</h2><div class="row">${S.wr?`<input id="rt" placeholder="Escreva o motivo do atraso" maxlength="140" value="${esc(S.rt||'')}">`:`<select id="rs"><option value="">Motivo${school().require_reason?' (obrigatório)':''}</option>${R.map(x=>`<option>${x}</option>`).join('')}</select>`}<button data-wr>${S.wr?'Escolher da lista':'✎ Escrever motivo'}</button><select id="tc"><option value="">Identificar professor automaticamente</option>${D.teachers.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join('')}</select><button class="p" id="go">Registrar atraso</button></div></div>`:''}`},
 atrasos(){const t=S.user.role=='teacher',list=D.lates.filter(l=>(!S.q||norm(l.name).includes(norm(S.q)))&&(!S.fc||l.cls==S.fc)).sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
-return `<h1>${S.user.role=='school_admin'?'Histórico de atrasos':'Alunos atrasados'}</h1><div class="row card"><input id="q" placeholder="Buscar aluno" value="${esc(S.q)}"><select id="fc"><option value="">Todas as turmas</option>${D.classes.map(c=>`<option value="${c.id}" ${S.fc==c.id?'selected':''}>${c.name}</option>`).join('')}</select></div><div class="card">${tbl(['Quando','Aluno','Turma','Professor','Motivo','Situação',t?'':'Ação'].filter(Boolean),lateRows(list,!t))}</div>`},
+return `<h1>${S.user.role=='director'?'Histórico de atrasos':'Alunos atrasados'}</h1><div class="row card"><input id="q" placeholder="Buscar aluno" value="${esc(S.q)}"><select id="fc"><option value="">Todas as turmas</option>${D.classes.map(c=>`<option value="${c.id}" ${S.fc==c.id?'selected':''}>${c.name}</option>`).join('')}</select></div><div class="card">${tbl(['Quando','Aluno','Turma','Professor','Motivo','Situação',t?'':'Ação'].filter(Boolean),lateRows(list,!t))}</div>`},
 graficos(){const a=active(),days=[6,5,4,3,2,1,0].map(n=>[day(n),a.filter(l=>l.date==day(n)).length]),mx=Math.max(1,...days.map(d=>d[1]));
 const rk=D.classes.map(c=>[c.name,a.filter(l=>l.cls==c.id).length]).sort((x,y)=>y[1]-x[1]),m2=Math.max(1,...rk.map(r=>r[1]));
 return `<h1>Gráficos</h1><div class="card"><h2>Últimos 7 dias</h2><div class="bars">${days.map(d=>`<div>${d[1]}<i style="height:${d[1]/mx*110}px"></i>${d[0].slice(8)}/${d[0].slice(5,7)}</div>`).join('')}</div></div><div class="card"><h2>Ranking por turma</h2>${rk.map(r=>`<div class="rk"><span>${r[0]}</span><i style="width:${r[1]/m2*100}%"></i><b>${r[1]}</b></div>`).join('')}</div>`},
@@ -185,7 +198,7 @@ aluno(){const l=D.lates.filter(x=>x.sid==S.user.sid||x.cgm==S.user.cgm).sort((a,
 return `<h1>Olá, ${esc(S.user.name.split(' ')[0])}</h1><div class="grid"><div class="stat a"><b>${a.length}</b>Total de atrasos</div><div class="stat a"><b>${a.filter(x=>x.date==day(0)).length}</b>Hoje</div></div><div class="card"><h2>Meus atrasos</h2>${tbl(['Data','Horário','Motivo'],l.map(x=>`<tr><td>${fmt(x.date)}</td><td>${x.time}</td><td>${esc(x.reason||'—')}</td></tr>`))}</div>`}};
 const schOpts=c=>{const x=PR.find(p=>norm(p[0])==norm(c));return x?x[1].map(n=>`<option>${esc(n)}</option>`).join(''):'<option value="">Cidade não encontrada</option>'};
 const pick=()=>{const c=PR.find(p=>norm(p[0])==norm($('#cty').value)),n=$('#sc').value;return c&&n?{name:n,city:c[0]+', PR',require_reason:false}:null};
-const can=a=>({t:['school_admin'],p:['school_admin','director']}[a]||[]).includes(S.user.role);
+const can=a=>({t:['director'],p:['director']}[a]||[]).includes(S.user.role);
 D={schools:[],classes:[],teachers:[],students:[],lates:[],audit:[],left:[],ovr:{},oldT:[],reqs:[],outReqs:[],lastRun:''};const SEED=JSON.stringify(D);
 function modal(title,html,ok,fn){S.modal={title,html,ok,fn};draw();const f=$('.md textarea,.md select,.md input:not([type=checkbox])');if(f)f.focus()}
 function modalHtml(){return S.modal?`<div class='mo'><div class='md' role='dialog' aria-modal='true'><h2>${S.modal.title}</h2>${S.modal.html}<div class='row' style='justify-content:flex-end;margin-top:1rem'><button data-mcancel>Voltar</button><button class='p' data-mok>${S.modal.ok||'Confirmar'}</button></div></div></div>`:''}
@@ -230,8 +243,8 @@ if(acc){acc.school={name:nm,city:me.city,require_reason:false};delete acc.sid;de
 else{tgt(r.from.name,T=>{(T.outReqs||[]).forEach(o=>{if(o.id==r.id)o.status='refused'})});if(acc){acc.notice='Seu pedido para o '+nm+' foi recusado.';LS.s('ace:acc:'+norm(r.email),JSON.stringify(acc))}}
 r.status=ok?'accepted':'refused';S.modal=null;log(ok?'Aceitou transferência':'Recusou transferência',r.name+' ('+r.from.name+')');say(ok?'Pedido aceito. '+r.name+' agora faz parte deste colégio.':'Pedido recusado.')}
 const rc=()=>{const p=(D.outReqs||[]).filter(o=>o.status=='pending');return p.length?`<div class='card'><b>Troca de colégio em análise</b>${p.map(o=>`<p>Pedido enviado para ${esc(o.to)}. Aguardando a administração.</p>`).join('')}</div>`:''};
-can2=()=>['school_admin','director'].includes(S.user.role);
-MENU.school_admin.push(['transf','Transferências']);
+can2=()=>['director'].includes(S.user.role);
+MENU.director.push(['transf','Transferências']);
 V.transf=()=>{const L=(D.reqs||[]).slice().reverse(),P=L.filter(r=>r.status=='pending'),H=L.filter(r=>r.status!='pending');return `<h1>Transferências</h1><p class='mut'>Professores e alunos de outros colégios pedem para entrar aqui. Ao aceitar, a pessoa sai do colégio de origem e passa a fazer parte somente deste.</p><div class='card'><h2>Pedidos pendentes</h2>${tbl(['Quem','Perfil','Veio de','Quando','Ação'],P.map(r=>`<tr><td>${esc(r.name)}</td><td>${r.kind=='student'?'Aluno':'Professor'}</td><td>${esc(r.from.name)}</td><td>${esc(r.at)}</td><td><button class='p' data-ra='${r.id}'>Aceitar</button> <button class='d' data-rr='${r.id}'>Recusar</button></td></tr>`))}</div><div class='card'><h2>Histórico</h2>${tbl(['Quem','Perfil','Veio de','Resultado'],H.map(r=>`<tr><td>${esc(r.name)}</td><td>${r.kind=='student'?'Aluno':'Professor'}</td><td>${esc(r.from.name)}</td><td>${r.status=='accepted'?'Aceito':'Recusado'}</td></tr>`))}</div>`};
 const _p=V.painel;V.painel=()=>{let h=_p();if(S.user.role=='teacher')h=h.replace('</h1>','</h1>'+rc());if(can2()){const n=(D.reqs||[]).filter(r=>r.status=='pending').length;if(n)h=h.replace('</h1>',`</h1><div class='card'><b>${n} pedido${n>1?'s':''} de troca de colégio aguardando.</b> <button data-v='transf'>Ver pedidos</button></div>`)}return h};
 const _a=V.aluno;V.aluno=()=>_a().replace('<div class="grid">',rc()+'<div class="grid">');
@@ -288,8 +301,8 @@ function loginView(){return `<div class="login"><div class="brand">API-<b>Contro
 <h2>Professor ou funcionário</h2><select id="rl"><option value="staff">Pedagogia</option><option value="school_admin">Administrador da escola</option><option value="director">Diretor</option><option value="teacher">Professor</option><option value="platform_admin">Administrador da plataforma</option></select><button class="p" id="in">Entrar</button><p class="mut">Demonstração: o acesso é simulado, sem senha.</p></div>
 <div class="card stack"><h2>Entrada do aluno</h2><input id="sn" placeholder="Nome completo"><input id="sg" placeholder="Código interno (CGM)"><button id="si">Ver meus atrasos</button><p class="mut">Experimente: Ana Beatriz Lima, CGM 40100.</p></div></div>`}
 function draw(){const r=$('#root'),key=(S.user?S.user.role:'out')+S.view,fresh=S.lk!==key;S.lk=key;r.className=S.user?'':'out';if(!S.user){r.innerHTML=wiz()+(S.toast?`<div class="toast">${S.toast}</div>`:'');return}
-const m=MENU[S.user.role];if(!m.some(x=>x[0]==S.view))S.view=m[0][0];
-r.innerHTML=`<div class="app"><nav><div class="brand">API-Controle Educacional</div><small>${ROLES[S.user.role]}<br>${esc(S.user.role=='platform_admin'?'Todas as escolas':school().name)}</small>${m.map(x=>`<button data-v="${x[0]}" class="${S.view==x[0]?'on':''}">${x[1]}</button>`).join('')}${['teacher','student'].includes(S.user.role)?'<button data-sw>🏫 Trocar de colégio</button>':''}<button data-mute>${mute?'🔇 Som desligado':'🔊 Som ligado'}</button><button data-out-app>Sair</button></nav><main class="${fresh?'in':''}"><div class="live"><i></i><span id="clk"></span></div>${V[S.view]()}</main></div>${modalHtml()}${S.toast?`<div class="toast">${S.toast}</div>`:''}`}
+const m=menuFor();if(!m.some(x=>x[0]==S.view))S.view=m[0][0];
+r.innerHTML=`<div class="app"><nav><div class="brand">API-Controle Educacional</div><small>${ROLES[S.user.role]}<br>${esc(S.user.role=='platform_admin'?'Todas as escolas':school().name)}</small>${m.map(x=>`<button data-v="${x[0]}" class="${S.view==x[0]?'on':''}">${x[1]}</button>`).join('')}${['teacher','student'].includes(S.user.role)?'<button data-sw>🏫 Trocar de colégio</button>':''}${S.user.asPlat?'<button data-xs>← Escolas da plataforma</button>':''}<button data-mute>${mute?'🔇 Som desligado':'🔊 Som ligado'}</button><button data-out-app>Sair</button></nav><main class="${fresh?'in':''}"><div class="live"><i></i><span id="clk"></span></div>${V[S.view]()}</main></div>${modalHtml()}${S.toast?`<div class="toast">${S.toast}</div>`:''}`}
 document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
 if(t.id=='in'){const role=$('#rl').value,sch=pick();if(!sch)return say('Escolha a cidade e o colégio.');S.user={role,name:{staff:'Equipe pedagógica',school_admin:'Administração',director:'Direção',teacher:'Marina Souza',platform_admin:'Plataforma'}[role],school:sch,tid:'t1'};S.view=MENU[role][0][0];draw()}
 else if(t.id=='si'){const n=norm($('#sn').value),g=$('#sg').value.trim(),s=D.students.find(x=>norm(x.name)==n&&x.cgm==g);if(!s)return say('Nome ou código incorretos. Confira e tente de novo.');const sch=pick();if(!sch)return say('Escolha a cidade e o colégio acima.');S.user={role:'student',name:s.name,sid:s.id,cgm:s.cgm,school:sch};draw()}
@@ -304,7 +317,7 @@ else if('move' in d){const s=D.students.find(x=>x.id==d.move),n=prompt('Nova tur
 else if('out' in d){const s=D.students.find(x=>x.id==d.out);D.students=D.students.filter(x=>x!=s);D.left.push({...s,at:fmt(day(0))});log('Removeu da escola',s.name);say('Aluno movido para “Alunos que saíram”.')}
 else if('back' in d){const s=D.left.find(x=>x.id==d.back);D.left=D.left.filter(x=>x!=s);D.students.push(s);log('Restaurou aluno',s.name);say('Aluno restaurado.')}
 else if(t.id=='prog'){if(!confirm('Aplicar a progressão de ano a todas as turmas?'))return;D.classes.forEach(c=>{const m=c.name.match(/(\d+)º (\w)/);if(m&&+m[1]<9)c.name=(+m[1]+1)+'º '+m[2]});log('Progressão de ano','Séries avançadas');say('Progressão aplicada.')}
-else if('enter' in d){const x=FL[+d.enter];S.user={role:'school_admin',name:'Plataforma',school:{name:x[1],city:x[0]+', PR',require_reason:false}};S.view='painel';draw()}});
+else if('enter' in d){const x=FL[+d.enter];S.user={role:'director',name:'Plataforma',school:{name:x[1],city:x[0]+', PR',require_reason:false}};S.view='painel';draw()}});
 document.addEventListener('change',e=>{const t=e.target;if(t.dataset.sel){sw()[t.dataset.sel]=t.checked;draw()}else if(t.id=='fc'){S.fc=t.value;draw()}else if(t.id=='rr'){school().require_reason=t.checked;log('Atualizou escola','Exigir motivo: '+t.checked);say('Configuração salva.')}});
 document.addEventListener('input',e=>{if(e.target.id=='q'){S.q=e.target.value;draw();const q=$('#q');q.focus();q.setSelectionRange(q.value.length,q.value.length)}});
 function after(){const m=$('main.in');if(!m)return;if(!matchMedia('(prefers-reduced-motion:reduce)').matches){m.querySelectorAll('tbody tr').forEach((r,i)=>r.style.animationDelay=Math.min(i,14)*35+'ms');m.querySelectorAll('.stat b').forEach(b=>{const n=+b.textContent;if(isNaN(n))return;const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/800);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)})}}
@@ -313,7 +326,88 @@ function tick(){const c=$('#clk');if(c)c.textContent='Ao vivo · '+new Date().to
 setInterval(tick,1000);
 document.addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(b){const r=b.getBoundingClientRect(),s=document.createElement('span');s.className='rip';s.style.left=(e.clientX-r.left)+'px';s.style.top=(e.clientY-r.top)+'px';b.append(s);setTimeout(()=>s.remove(),650);beep(620,.06,'triangle',.06,900)}else if(e.target.matches('input[type=checkbox],select'))beep(480,.05,'sine',.04)},true);
 document.addEventListener('input',e=>{if(e.target.id=='cty'){$('#sc').innerHTML=schOpts(e.target.value)}});
-restore();
-(async()=>{try{const db=await claude.use('db'),u=await claude.use('user');if(!db||!u)return;const ref=db.collection('data/users/'+await u.id()).doc('state'),s=await ref.get();if(s.exists&&!LS.g('ace:session')){const o=JSON.parse(s.data().v);Object.keys(o).forEach(k=>LS.s(k,o[k]));restore();draw()}CL=ref}catch(e){}})();
-draw();
+/* ===== v3: banco compartilhado, senha, Diretor, configurações ===== */
+let DB=null,UNS=null;
+const slug=s=>norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,50);
+const h32=s=>{let h=5381;for(const c of s)h=(h*33^c.charCodeAt(0))>>>0;return h.toString(36)};
+const sk=n=>slug(n)+'-'+h32(n),ak=e=>norm(e).replace(/[^a-z0-9@._+-]/g,'_'),cgk=c=>String(c).replace(/[^A-Za-z0-9._-]/g,'_');
+const PK=['classes','teachers','students','left','audit','ovr','oldT','reqs','outReqs','cfg'];
+const EMPTY=()=>({schools:[],classes:[],teachers:[],students:[],lates:[],audit:[],left:[],ovr:{},oldT:[],reqs:[],outReqs:[],cfg:{},lastRun:''});
+function split(d){const o={};PK.forEach(k=>o[k]=JSON.stringify(d[k]));o.meta=JSON.stringify({lastRun:d.lastRun||''});const m={};(d.lates||[]).forEach(l=>{const k='lates-'+String(l.date).slice(0,7);(m[k]=m[k]||[]).push(l)});Object.keys(m).forEach(k=>o[k]=JSON.stringify(m[k]));return o}
+function join(o){const d=EMPTY();for(const k in o){try{const v=JSON.parse(o[k]);if(PK.includes(k))d[k]=v;else if(k=='meta')d.lastRun=v.lastRun||'';else if(k.startsWith('lates-'))d.lates=d.lates.concat(v)}catch(e){}}return d}
+const ST={
+async acc(e){const k=ak(e);if(DB){const s=await DB.doc('acc/'+k).get();return s.exists?s.data():null}try{return JSON.parse(LS.g('ace:ac3:'+k))}catch(x){return null}},
+async putAcc(a){const k=ak(a.email);if(DB)await DB.doc('acc/'+k).set(a);else LS.s('ace:ac3:'+k,JSON.stringify(a))},
+async updAcc(e,p){const a=await ST.acc(e);if(a)await ST.putAcc({...a,...p})},
+async parts(n){const o={},b=sk(n);if(DB){const s=await DB.collection('sch/'+b+'/p').get();s.docs.forEach(d=>o[d.id]=d.data().v)}else{const pf='ace2:p:'+b+':';try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith(pf))o[k.slice(pf.length)]=localStorage.getItem(k)}}catch(e){}}return o},
+async getP(n,p){if(DB){const s=await DB.doc('sch/'+sk(n)+'/p/'+p).get();return s.exists?s.data().v:null}return LS.g('ace:p:'+sk(n)+':'+p)},
+async setP(n,p,v){if(DB)await DB.doc('sch/'+sk(n)+'/p/'+p).set({v});else LS.s('ace:p:'+sk(n)+':'+p,v)},
+async ix(c){const k=cgk(c);if(DB){const s=await DB.doc('idx/'+k).get();return s.exists?s.data().school:''}return LS.g('ace:ix:'+k)||''},
+async setIx(c,n){const k=cgk(c);if(DB)await DB.doc('idx/'+k).set({school:n});else LS.s('ace:ix:'+k,n)},
+async delIx(c,n){if(await ST.ix(c)!==n)return;const k=cgk(c);if(DB)await DB.doc('idx/'+k).delete();else LS.r('ace:ix:'+k)}};
+async function openSchool(n){const o=await ST.parts(n);D=join(o);S.last={...o};S.loaded=n;S.cg=new Set(D.students.map(s=>s.cgm).filter(Boolean));watch(n)}
+function loadSchool(n){S.loaded=n}
+function watch(n){if(UNS){try{UNS()}catch(e){}UNS=null}if(!DB)return;try{UNS=DB.collection('sch/'+sk(n)+'/p').onSnapshot(s=>{if(S.loaded!==n)return;const cur=split(D);let ch=false;s.docs.forEach(d=>{const k=d.id,v=d.data().v;if(S.last[k]!==v&&cur[k]===S.last[k]){cur[k]=v;S.last[k]=v;ch=true}});if(ch){D=join(cur);S.cg=new Set(D.students.map(x=>x.cgm).filter(Boolean));const a=document.activeElement;if(S.user&&!S.modal&&!(a&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)))draw()}},()=>{})}catch(e){}}
+function flushSoon(){if(!S.loaded||!S.last)return;clearTimeout(S.ft);S.ft=setTimeout(flush,500)}
+async function flush(){if(S.busy){S.ft=setTimeout(flush,300);return}S.busy=1;try{const n=S.loaded,o=split(D);for(const k in o){if(S.last[k]!==o[k]){await ST.setP(n,k,o[k]);S.last[k]=o[k]}}const now=new Set(D.students.map(s=>s.cgm).filter(Boolean));for(const c of now)if(!S.cg.has(c)){await ST.setIx(c,n);S.cg.add(c)}for(const c of [...S.cg])if(!now.has(c)){await ST.delIx(c,n);S.cg.delete(c)}}catch(e){if(!S.warned&&/permission|denied|not_granted|forbidden/i.test(String(e&&(e.code||e.message)))){S.warned=1;say('Você está com acesso somente de leitura. Peça ao dono do site acesso de Colaborador para salvar.')}}S.busy=0}
+function persist(){if(S.user)LS.s('ace:ses',JSON.stringify({e:S.user.email,ph:S.user.ph}));else LS.r('ace:ses');flushSoon()}
+async function restore(){try{const s=JSON.parse(LS.g('ace:ses')||'null');if(!s)return;const a=await ST.acc(s.e);if(!a||a.hash!==s.ph){LS.r('ace:ses');return}await enter(a)}catch(e){}}
+async function tgt(n,keys,fn){const T={},old={};for(const k of keys){const v=await ST.getP(n,k);old[k]=v;try{T[k]=v?JSON.parse(v):(k=='ovr'||k=='cfg'?{}:[])}catch(e){T[k]=[]}}fn(T);for(const k of keys){const nv=JSON.stringify(T[k]);if(nv!==old[k])await ST.setP(n,k,nv)}}
+function log(action,summary){D.audit.unshift({when:new Date().toLocaleString('pt-BR'),who:S.user.name,action,summary});if(D.audit.length>300)D.audit.length=300}
+const b64=u=>btoa(String.fromCharCode(...new Uint8Array(u)));
+async function hashPw(pw,salt){const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveBits']);return b64(await crypto.subtle.deriveBits({name:'PBKDF2',salt:Uint8Array.from(atob(salt),c=>c.charCodeAt(0)),iterations:120000,hash:'SHA-256'},k,256))}
+const newSalt=()=>b64(crypto.getRandomValues(new Uint8Array(16)));
+async function enter(acc){const u={...acc};u.ph=acc.hash;delete u.hash;delete u.salt;u.prefs=acc.prefs||{};
+if(u.school)await openSchool(u.school.name);
+if(u.role=='teacher'){let t=D.teachers.find(x=>(x.email&&norm(x.email)==norm(u.email))||(!x.email&&norm(x.name)==norm(u.name)));if(!t){t={id:'t'+Date.now(),name:u.name,cls:[]};D.teachers.push(t)}t.email=u.email;u.tid=t.id}
+if(u.role=='student'){const s=D.students.find(x=>x.id==u.sid)||D.students.find(x=>x.cgm==u.cgm&&norm(x.name)==norm(u.name));if(!s){say('Aluno não encontrado neste colégio. Confira nome e CGM, ou peça à pedagogia para cadastrar você.');return false}u.sid=s.id;u.cgm=s.cgm}
+S.user=u;S.view=MENU[u.role][0][0];S.w=null;draw();
+if(acc.notice){const nt=acc.notice;ST.updAcc(u.email,{notice:''});setTimeout(()=>say(nt),500)}return true}
+async function decide(r,ok,cid){const me=school(),nm=me.name;
+if(ok){if(r.kind=='student'&&D.students.some(s=>s.cgm==r.cgm))return say('Já existe um aluno com esse CGM neste colégio.');
+await tgt(r.from.name,['students','left','teachers','oldT','outReqs'],T=>{if(r.kind=='student'){const s=T.students.find(x=>x.id==r.sid||x.cgm==r.cgm);if(s){T.students=T.students.filter(x=>x!=s);T.left.push({...s,at:fmt(day(0)),why:'Transferido para '+nm})}}else{const p=T.teachers.find(x=>x.id==r.tid);if(p){T.teachers=T.teachers.filter(x=>x!=p);T.oldT.push(p)}}T.outReqs.forEach(o=>{if(o.id==r.id)o.status='accepted'})});
+if(r.kind=='student')D.students.push({id:'n'+Date.now(),name:r.name,cgm:r.cgm,cls:cid,email:r.email});else D.teachers.push({id:'t'+Date.now(),name:r.name,email:r.email,cls:[]});
+await ST.updAcc(r.email,{school:{name:nm,city:me.city,require_reason:false},notice:'Seu pedido para entrar no '+nm+' foi aceito. Bem-vindo(a)!'})}
+else{await tgt(r.from.name,['outReqs'],T=>{T.outReqs.forEach(o=>{if(o.id==r.id)o.status='refused'})});await ST.updAcc(r.email,{notice:'Seu pedido para o '+nm+' foi recusado.'})}
+r.status=ok?'accepted':'refused';S.modal=null;log(ok?'Aceitou transferência':'Recusou transferência',r.name+' ('+r.from.name+')');say(ok?'Pedido aceito. '+r.name+' agora faz parte deste colégio.':'Pedido recusado.')}
+function wiz(){if(!S.ready)return `<div class='login'><div class='brand'>API-<b>Controle</b> Educacional</div><div class='card step'><p class='mut'>Conectando ao banco de dados…</p></div></div>`;
+const w=S.w=S.w||{step:1,email:'',role:'',city:'Curitiba',name:'',cgm:''};let b='';
+if(w.step=='L')b=`<h2>Bem-vindo(a) de volta!</h2><p><b>${esc(w.acc.name)}</b><br><span class='mut'>${ROLES[w.acc.role]}${w.acc.school?' · '+esc(w.acc.school.name):''}</span></p><input id='wpw' type='password' placeholder='Sua senha' autocomplete='current-password'><button class='p' data-gl>Entrar</button><button data-gnew>Usar outro e-mail</button>`;
+else if(w.step==1)b=`<h2>Qual é o seu e-mail?</h2><p class='mut'>Sua conta, suas turmas e suas configurações ficam salvas nele.</p><input id='we' type='email' placeholder='voce@email.com' value='${esc(w.email)}' autocomplete='email'><button class='p' data-gn>Continuar</button>`;
+else if(w.step==2)b=`<h2>Quem é você?</h2><div class='tiles'>${Object.entries(ROLES).map(([k,v])=>`<button class='tile ${w.role==k?'sel':''}' data-gr='${k}'>${v}</button>`).join('')}</div><button data-gb>Voltar</button>`;
+else if(w.step==3)b=`<h2>Qual é o seu colégio?</h2><input id='cty' list='cl' placeholder='Digite sua cidade' value='${esc(w.city)}' autocomplete='off'><datalist id='cl'>${PR.map(c=>`<option value='${esc(c[0])}'>`).join('')}</datalist><select id='sc'>${schOpts(w.city)}</select><div class='row'><button data-gb>Voltar</button><button class='p' data-gn>Continuar</button></div>`;
+else b=`<h2>${w.role=='student'?'Confirme seus dados':'Crie sua conta'}</h2><input id='wnm' placeholder='Nome completo' value='${esc(w.name)}'>${w.role=='student'?`<input id='wcg' placeholder='Código interno (CGM)' value='${esc(w.cgm)}'>`:''}<input id='wpw' type='password' placeholder='Crie uma senha (mín. 8 caracteres)' autocomplete='new-password'><input id='wp2' type='password' placeholder='Repita a senha' autocomplete='new-password'><div class='row'><button data-gb>Voltar</button><button class='p' data-gf>Criar conta e entrar</button></div>`;
+const di={1:1,L:1,2:2,3:3,4:4}[w.step];
+return `<div class='login'><div class='brand'>API-<b>Controle</b> Educacional</div><p class='mut'>Gestão digital de atrasos escolares, sem papel.</p><div class='card stack step'><div class='dots'>${[1,2,3,4].map(i=>`<i class='${i<=di?'on':''}'></i>`).join('')}</div>${b}</div></div>`}
+/* menu, preferências e configurações */
+const FONTS={nunito:'"Nunito","Segoe UI",system-ui,sans-serif',inter:'Inter,"Segoe UI",system-ui,sans-serif',quicksand:'Quicksand,"Segoe UI",system-ui,sans-serif',system:'"Segoe UI",system-ui,-apple-system,sans-serif',serif:'Georgia,"Times New Roman",serif'};
+const lum=h=>{const n=parseInt(h.slice(1),16),f=v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)};return .2126*f(n>>16&255)+.7152*f(n>>8&255)+.0722*f(n&255)};
+function applyPrefs(p){p=p||{};try{const r=document.documentElement,st=r.style;if(p.accent){st.setProperty('--pr',p.accent);st.setProperty('--prt',lum(p.accent)>.45?'#04122e':'#fff');st.setProperty('--sb','color-mix(in srgb,'+p.accent+' 38%,#050816)')}else['--pr','--prt','--sb'].forEach(k=>st.removeProperty(k));if(p.font)st.setProperty('--ff',FONTS[p.font]||FONTS.nunito);else st.removeProperty('--ff');if(p.theme&&p.theme!='auto')r.setAttribute('data-theme',p.theme);else r.removeAttribute('data-theme');r.setAttribute('data-bg',p.bg||'');r.classList.toggle('glass',!!p.glass)}catch(e){}}
+function menuFor(){const base=MENU[S.user.role],o=(S.user.prefs||{}).order||[];return base.slice().sort((a,b)=>{const ia=o.indexOf(a[0]),ib=o.indexOf(b[0]);return(ia<0?999+base.indexOf(a):ia)-(ib<0?999+base.indexOf(b):ib)})}
+function setPref(k,v){const u=S.user;u.prefs={...(u.prefs||{}),[k]:v};clearTimeout(S.pt);S.pt=setTimeout(()=>ST.updAcc(u.email,{prefs:u.prefs}).catch(()=>{}),500);draw()}
+Object.keys(MENU).forEach(k=>MENU[k].push(['config','Configurações']));
+V.config=()=>{const u=S.user,p=u.prefs||{},ids=menuFor(),cores=['#2f6df0','#7c3aed','#0f9d6b','#ea6a12','#db2777','#475569'];
+return `<h1>Configurações</h1><div class='card stack'><h2>Aparência</h2><div><p class='mut'>Tema</p><div class='row'>${[['auto','Automático'],['light','Claro'],['dark','Escuro']].map(([k,l])=>`<button class='${(p.theme||'auto')==k?'p':''}' data-pf='theme:${k}'>${l}</button>`).join('')}</div></div><div><p class='mut'>Cor do site</p><div class='row'>${cores.map(c=>`<button class='sw' style='background:${c}' aria-label='Cor ${c}' data-pf='accent:${c}'>${p.accent==c?'✓':''}</button>`).join('')}<input type='color' id='pcol' value='${p.accent||'#2f6df0'}' aria-label='Escolher outra cor'><button data-pf='accent:'>Padrão</button></div></div><div><p class='mut'>Fonte das letras</p><select id='pff'>${Object.entries({nunito:'Nunito (padrão)',inter:'Inter',quicksand:'Quicksand',system:'Segoe UI / sistema',serif:'Serifada'}).map(([k,l])=>`<option value='${k}' ${(p.font||'nunito')==k?'selected':''}>${l}</option>`).join('')}</select></div><div><p class='mut'>Fundo</p><select id='pbg'>${[['','Padrão'],['grad','Degradê'],['dots','Pontilhado'],['aurora','Aurora animada']].map(([k,l])=>`<option value='${k}' ${(p.bg||'')==k?'selected':''}>${l}</option>`).join('')}</select></div><label><input type='checkbox' id='pgl' ${p.glass?'checked':''}> Efeito liquid glass (botões e cartões de vidro translúcido)</label></div><div class='card'><h2>Ordem das abas</h2><p class='mut'>Use as setas para colocar uma aba na frente da outra.</p>${ids.map((x,i)=>`<div class='row ord'><span style='flex:1'>${x[1]}</span><button data-mu='${x[0]}' ${i?'':'disabled'} aria-label='Subir ${x[1]}'>↑</button><button data-md='${x[0]}' ${i<ids.length-1?'':'disabled'} aria-label='Descer ${x[1]}'>↓</button></div>`).join('')}<p><button data-mreset>Restaurar ordem padrão</button></p></div><div class='card stack'><h2>Segurança</h2><p class='mut'>Alterar a senha de ${esc(u.email)}</p><input id='pw0' type='password' placeholder='Senha atual' autocomplete='current-password'><input id='pw1' type='password' placeholder='Nova senha (mín. 8 caracteres)' autocomplete='new-password'><input id='pw2' type='password' placeholder='Repita a nova senha' autocomplete='new-password'><button class='p' data-pw>Alterar senha</button></div>`};
+const _d3=draw;draw=function(){applyPrefs(S.user?S.user.prefs:null);_d3()};
+window.addEventListener('change',e=>{const t=e.target;if(!S.user)return;if(t.id=='pff'||t.id=='pbg'||t.id=='pgl'||t.id=='pcol'){e.stopImmediatePropagation();if(t.id=='pff')setPref('font',t.value);else if(t.id=='pbg')setPref('bg',t.value);else if(t.id=='pgl')setPref('glass',t.checked);else setPref('accent',t.value)}else if(t.id=='rr'){e.stopImmediatePropagation();D.cfg=D.cfg||{};D.cfg.require_reason=t.checked;log('Atualizou escola','Exigir motivo: '+t.checked);say('Configuração salva.')}},true);
+window.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.matches&&e.target.matches('.step input')){const b=document.querySelector('.step button.p');if(b)b.click()}});
+window.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset,w=S.w,go=()=>{e.stopImmediatePropagation();e.preventDefault()},R=f=>{go();f().catch(()=>say('Algo deu errado. Tente de novo.'))};
+if('gn' in d)R(async()=>{if(w.step==1){const em=w.email.trim();if(!/^\S+@\S+\.\S+$/.test(em))return say('Informe um e-mail válido.');w.email=em;const a=await ST.acc(em);if(a){w.acc=a;w.step='L'}else w.step=2;draw()}else if(w.step==3){const c=PR.find(p=>norm(p[0])==norm($('#cty').value)),n=$('#sc').value;if(!c||!n)return say('Escolha a cidade e o colégio.');w.sch={name:n,city:c[0]+', PR',require_reason:false};w.step=4;draw()}});
+else if('gl' in d)R(async()=>{const now=Date.now();if(w.lock&&now<w.lock)return say('Muitas tentativas incorretas. Aguarde um minuto.');const h=await hashPw($('#wpw').value,w.acc.salt);if(h!==w.acc.hash){w.tries=(w.tries||0)+1;if(w.tries>=5){w.lock=now+60000;w.tries=0}return say('Senha incorreta.')}await enter(w.acc)});
+else if('gr' in d){go();w.role=d.gr;w.step=w.role=='platform_admin'?4:3;draw()}
+else if('gb' in d){go();w.step=w.step==4&&w.role=='platform_admin'?2:Math.max(1,w.step-1);draw()}
+else if('gnew' in d){go();w.step=1;w.email='';w.acc=null;draw()}
+else if('gf' in d)R(async()=>{const nm=$('#wnm').value.trim(),p1=$('#wpw').value,p2=$('#wp2').value;if(!nm)return say('Informe seu nome completo.');let cgm;if(w.role=='student'){cgm=$('#wcg').value.trim();if(!cgm)return say('Informe seu CGM.')}if(p1.length<8)return say('Informe uma senha com pelo menos 8 caracteres.');if(p1!==p2)return say('Informe a mesma senha nos dois campos.');if(await ST.acc(w.email))return say('Informe outro e-mail: esse já tem conta.');const school=w.role=='platform_admin'?null:w.sch;if(w.role=='student'){await openSchool(school.name);if(!D.students.some(x=>x.cgm==cgm&&norm(x.name)==norm(nm)))return say('Nome ou CGM incorreto, ou o aluno não está cadastrado neste colégio.')}const salt=newSalt(),acc={email:w.email,name:nm,role:w.role,school,salt,hash:await hashPw(p1,salt),prefs:{}};if(cgm)acc.cgm=cgm;await ST.putAcc(acc);await enter(acc)});
+else if('enter' in d){go();R(async()=>{const x=FL[+d.enter],sch={name:x[1],city:x[0]+', PR',require_reason:false};await openSchool(sch.name);S.user={...S.user,role:'director',school:sch,asPlat:true};S.view='painel';draw()})}
+else if('xs' in d){go();S.user={...S.user,role:'platform_admin',school:null,asPlat:false};S.view='escolas';draw()}
+else if('sw' in d){go();modal('Trocar de colégio',`<p class='mut'>Escolha o colégio de destino. A direção dele vai aceitar ou recusar o seu pedido. Se aceitar, você sai deste colégio e passa a fazer parte somente do novo.</p><input id='cty' list='cl' value='Curitiba' style='width:100%' autocomplete='off'><datalist id='cl'>${PR.map(c=>`<option value='${esc(c[0])}'>`).join('')}</datalist><select id='sc'>${schOpts('Curitiba')}</select>`,'Enviar pedido',async()=>{const c=PR.find(p=>norm(p[0])==norm($('#cty').value)),n=$('#sc').value;if(!c||!n)return say('Escolha a cidade e o colégio.');if(n==school().name)return say('Escolha um colégio diferente do atual.');if((D.outReqs||[]).some(o=>o.to==n&&o.status=='pending'))return say('Você já enviou um pedido para esse colégio.');const u=S.user,r={id:'r'+Date.now(),kind:u.role,name:u.name,email:u.email,cgm:u.cgm,sid:u.sid,tid:u.tid,from:{name:school().name,city:school().city},at:new Date().toLocaleString('pt-BR'),status:'pending'};await tgt(n,['reqs'],T=>{T.reqs.push(r)});D.outReqs.push({id:r.id,to:n,status:'pending'});S.modal=null;log('Pediu troca de colégio','para '+n);say('Pedido enviado para '+n+'.')})}
+else if(t.id=='add')R(async()=>{const n=$('#nn').value.trim(),c=$('#nc').value.trim();if(!n||!c)return say('Informe nome e CGM.');if(D.students.some(s=>s.cgm==c))return say('Esse CGM já está cadastrado.');const o=await ST.ix(c);if(o&&o!==school().name)return say('Este CGM pertence a um aluno do colégio '+o+'. Ele precisa pedir a troca de colégio.');if(!D.classes.length)return say('Informe uma turma: crie uma turma antes de cadastrar alunos.');D.students.push({id:'n'+Date.now(),name:n,cgm:c,cls:$('#ncl').value});log('Cadastrou aluno',n);say('Aluno cadastrado.')});
+else if('pf' in d){go();const i=d.pf.indexOf(':');setPref(d.pf.slice(0,i),d.pf.slice(i+1))}
+else if('mu' in d||'md' in d){go();const ids=menuFor().map(x=>x[0]),i=ids.indexOf(d.mu||d.md),j='mu' in d?i-1:i+1;if(j>=0&&j<ids.length){[ids[i],ids[j]]=[ids[j],ids[i]];setPref('order',ids)}}
+else if('mreset' in d){go();setPref('order',[])}
+else if('pw' in d)R(async()=>{const a=await ST.acc(S.user.email),p0=$('#pw0').value,p1=$('#pw1').value,p2=$('#pw2').value;if(await hashPw(p0,a.salt)!==a.hash)return say('Senha atual incorreta.');if(p1.length<8)return say('Informe uma nova senha com pelo menos 8 caracteres.');if(p1!==p2)return say('Informe a mesma senha nos dois campos.');const salt=newSalt(),hash=await hashPw(p1,salt);await ST.updAcc(a.email,{salt,hash});S.user.ph=hash;say('Senha alterada com sucesso.')})
+},true);
+async function initApp(){try{DB=await claude.use('db')}catch(e){DB=null}S.ready=true;draw();await restore();draw()}
+initApp();
+
 </script></body></html>
